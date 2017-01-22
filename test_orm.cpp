@@ -2,7 +2,6 @@
 #include <string>
 #include <stdint.h>
 #include "soci/soci.h"
-//#include "soci/type-conversion.h"
 
 using namespace soci;
 using namespace std;
