@@ -31,7 +31,6 @@ struct type_conversion<Person>
     }
     static void to_base(const Person& person, values& v, indicator& ind)
     {
-        //v.set("id", (long long)person.id);
         v.set("id", (long long)person.id);
         v.set("first_name", person.first_name);
         v.set("last_name", person.last_name);
@@ -155,6 +154,7 @@ int main()
     init_pool();
     int id = insert();
     select(id);
+    select_all();
     update(id, "hello", "world");
     select(id);
     remove(id);
