@@ -37,12 +37,12 @@ struct type_conversion<Person>
 };
 }
 
-int insert()
+int insert(const string& first_name, const string& last_name)
 {
     session sql(g_pool);
     Person person;
-    person.first_name = "Steve";
-    person.last_name = "Jobs";
+    person.first_name = first_name;
+    person.last_name = last_name;
     try
     {
         sql << "insert into Person(first_name, last_name) values(:first_name, :last_name)", use(person);
@@ -151,7 +151,7 @@ void select_all()
 int main()
 {
     init_pool();
-    int id = insert();
+    int id = insert("first_name", "last_name");
     select(id);
     select_all();
     update(id, "hello", "world");

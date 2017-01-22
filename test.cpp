@@ -9,11 +9,9 @@ using namespace std;
 int g_pool_size = 3;
 connection_pool g_pool(g_pool_size);
 
-int insert()
+int insert(const string& first_name, const string& last_name)
 {
     session sql(g_pool);
-    string first_name = "Steve";
-    string last_name = "Jobs";
     try
     {
         sql << "insert into Person(first_name, last_name) values(:first_nam, :last_name)", use(first_name), use(last_name);
@@ -116,7 +114,7 @@ void select_all()
 int main()
 {
     init_pool();
-    int id = insert();
+    int id = insert("Steve", "Jobs");
     select(id);
     select_all();
     update(id, "hello", "world");
